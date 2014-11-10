@@ -13,12 +13,12 @@ class ControllerPaymentRatepay extends Controller {
             $this->data['ratepay_token'] = $initialisierung;
 
             //Definitions
-            $this->data['button_confirm'] = $this->language->get('button_confirm');
+            $this->data['button_confirm'] = $this->language->get('button_goto_paypage');
             $this->data['button_back'] = $this->language->get('button_back');
 
             $this->data['continue'] = 'index.php?route=checkout/success';
         } else {
-
+            $this->data['error_common'] = $this->language->get('error_common');
         }
 
         if ($this->request->get['route'] != 'checkout/guest_step_3') {
@@ -79,7 +79,8 @@ class ControllerPaymentRatepay extends Controller {
     public function failure() {
         $this->load->language('payment/ratepay');
 
-        $this->data['ratepay_back_to_checkout'] = $this->language->get('ratepay_back_to_checkout');
+        $this->data['button_goto_checkout'] = $this->language->get('button_goto_checkout');
+        $this->data['error_failure'] = $this->language->get('error_failure');
 
         $this->data['button_checkout'] = $this->url->link('checkout/checkout');
 

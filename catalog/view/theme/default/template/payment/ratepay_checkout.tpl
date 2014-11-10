@@ -1,6 +1,6 @@
 <div class="content">
     <div><p><?php echo $logo; ?></p></div>
-    <div id="ratepay_error" style="color:red; margin-bottom:10px"></div>
+    <div id="ratepay_error" style="color:red; margin-bottom:10px"><?php if (isset($error_common)) echo $error_common; ?></div>
 </div>
 
 <div class="buttons">

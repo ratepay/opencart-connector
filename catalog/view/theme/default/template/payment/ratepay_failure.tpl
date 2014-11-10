@@ -1,10 +1,12 @@
 <?php echo $header; ?>
 
-Leider nicht erfolgreich
+<div class="content">
+    <div><p><?php echo $error_failure; ?></p></div>
+</div>
 
 <div class="buttons">
     <div class="right">
-        <a id="checkout" class="button"><span><?php echo $ratepay_back_to_checkout; ?></span></a>
+        <a id="checkout" class="button"><span><?php echo $button_goto_checkout; ?></span></a>
     </div>
 </div>
 
