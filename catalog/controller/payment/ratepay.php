@@ -79,6 +79,10 @@ class ControllerPaymentRatepay extends Controller {
     public function failure() {
         $this->load->language('payment/ratepay');
 
+        if (!$this->config->get('ratepay_sandbox')) {
+            $this->session->data['ratepay']['hide'] = true;
+        }
+
         $this->data['button_goto_checkout'] = $this->language->get('button_goto_checkout');
         $this->data['error_failure'] = $this->language->get('error_failure');
 

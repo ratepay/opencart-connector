@@ -4,6 +4,10 @@ class ModelPaymentRatepay extends Model {
         $this->load->language('payment/ratepay');
         $method_data = array();
 
+        if (isset($this->session->data['ratepay']['hide']) && $this->session->data['ratepay']['hide'] === true) {
+            return $method_data;
+        }
+
         if (!(bool) $this->config->get('ratepay_status')) {
             return $method_data;
         }
