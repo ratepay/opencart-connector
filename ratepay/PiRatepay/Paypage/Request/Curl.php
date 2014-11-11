@@ -24,9 +24,22 @@ extends PiRatepay_Paypage_Request_RequestAbstract
         $curlInit = curl_init(parent::getUrl());
         curl_setopt($curlInit, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curlInit, CURLOPT_POST, TRUE);
+        curl_setopt($curlInit, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curlInit, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($curlInit, CURLOPT_SSLVERSION, TRUE);
+        curl_setopt($curlInit, CURLOPT_HTTP_VERSION, 'CURL_HTTP_VERSION_1_1');
         curl_setopt($curlInit, CURLOPT_POSTFIELDS, json_encode($params));
         $result = curl_exec($curlInit);
         return $result;
     }
+
+    /*
+ CURLOPT_SSL_VERIFYPEER => 0,
+CURLOPT_SSL_VERIFYHOST => 0,
+CURLOPT_SSLVERSION => 1,
+CURLOPT_RETURNTRANSFER => 1,
+CURLOPT_POST => 1,
+CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+     */
 
 }

@@ -10,7 +10,8 @@ class ControllerPaymentRatepay extends Controller {
         // Getting RatePAY PayPage token
         $initialisierung = $this->_initialisation();
         if (gettype($initialisierung) == "string") {
-            $this->data['ratepay_token'] = $initialisierung;
+            $helperConnection = new RatepayHelperConnection;
+            $this->data['continue_to_ratepay'] = $helperConnection->getRatepayPayPageUrl($this->config->get('ratepay_sandbox')) . '/paypage/payment/show/lang/de/token/' . $initialisierung;
 
             //Definitions
             $this->data['text_ratepay_paymentpage'] = str_replace('%s', $this->config->get('ratepay_title'), $this->language->get('text_ratepay_paymentpage'));
@@ -18,7 +19,6 @@ class ControllerPaymentRatepay extends Controller {
             $this->data['button_confirm'] = $this->language->get('button_goto_paypage');
             $this->data['button_back'] = $this->language->get('button_back');
 
-            $this->data['continue'] = 'index.php?route=checkout/success';
         } else {
             $this->data['error_common'] = $this->language->get('error_common');
         }
@@ -280,7 +280,7 @@ class ControllerPaymentRatepay extends Controller {
                 $this->session->data['order_id']
             )
         );
-        $requestObject->setSandBoxUrl($helperConnection->getRatepayGatewayUrl($this->config->get('ratepay_sandbox')));
+        $requestObject->setSandBoxUrl($helperConnection->getRatepayPayPageApiUrl($this->config->get('ratepay_sandbox')));
 
         return $requestObject;
     }

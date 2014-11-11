@@ -21,7 +21,7 @@
         }
         runningCheckout = true;
 
-        var url = 'http://paypage.dev/paypage/payment/show/lang/de/token/<?php echo $ratepay_token; ?>';
+        var url = '<?php echo $continue_to_ratepay; ?>';
 
         $(location).attr('href',url);
     });
