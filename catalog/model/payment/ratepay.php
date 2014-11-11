@@ -8,6 +8,10 @@ class ModelPaymentRatepay extends Model {
             return $method_data;
         }
 
+        if ($address['iso_code_2'] != 'DE') {
+            return $method_data;
+        }
+
         if (!(bool) $this->config->get('ratepay_status')) {
             return $method_data;
         }

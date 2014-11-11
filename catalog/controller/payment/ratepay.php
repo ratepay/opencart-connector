@@ -13,6 +13,8 @@ class ControllerPaymentRatepay extends Controller {
             $this->data['ratepay_token'] = $initialisierung;
 
             //Definitions
+            $this->data['text_ratepay_paymentpage'] = str_replace('%s', $this->config->get('ratepay_title'), $this->language->get('text_ratepay_paymentpage'));
+
             $this->data['button_confirm'] = $this->language->get('button_goto_paypage');
             $this->data['button_back'] = $this->language->get('button_back');
 
@@ -119,6 +121,8 @@ class ControllerPaymentRatepay extends Controller {
     private function _getRequestModel() {
         $this->load->model('checkout/order');
         $this->load->model('account/address');
+        $this->load->model('checkout/coupon');
+        $this->load->model('checkout/voucher');
 
         $order = $this->model_checkout_order->getOrder($this->session->data['order_id']);
         $articles = $this->cart->getProducts();
@@ -146,16 +150,46 @@ class ControllerPaymentRatepay extends Controller {
             );
         }
 
-        $basketModel->addItem(
-            new PiRatepay_Paypage_Model_Item(
-                $this->session->data['shipping_method']['code'],
-                $this->session->data['shipping_method']['title'],
-                1,
-                $this->session->data['shipping_method']['cost'],
-                $this->session->data['shipping_method']['cost'],
-                $this->_getTaxAmount($this->tax->getRates($this->session->data['shipping_method']['cost'], $this->session->data['shipping_method']['tax_class_id']))
-            )
-        );
+        if (isset($this->session->data['shipping_method'])) {
+            $basketModel->addItem(
+                new PiRatepay_Paypage_Model_Item(
+                    $this->session->data['shipping_method']['code'],
+                    $this->session->data['shipping_method']['title'],
+                    1,
+                    $this->session->data['shipping_method']['cost'],
+                    $this->session->data['shipping_method']['cost'],
+                    $this->_getTaxAmount($this->tax->getRates($this->session->data['shipping_method']['cost'], $this->session->data['shipping_method']['tax_class_id']))
+                )
+            );
+        }
+
+        if (isset($this->session->data['coupon'])) {
+            $coupon = $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
+            $basketModel->addItem(
+                new PiRatepay_Paypage_Model_Item(
+                    $coupon['code'],
+                    $coupon['name'],
+                    1,
+                    $coupon['discount'] * -1,
+                    $coupon['discount'] * -1,
+                    0
+                )
+            );
+        }
+
+        if (isset($this->session->data['voucher'])) {
+            $voucher = $this->model_checkout_voucher->getVoucher($this->session->data['voucher']);
+            $basketModel->addItem(
+                new PiRatepay_Paypage_Model_Item(
+                    $voucher['code'],
+                    'Voucher/Giftcard (from ' . $voucher['from_name'] . ')',
+                    1,
+                    $voucher['amount'] * -1,
+                    $voucher['amount'] * -1,
+                    0
+                )
+            );
+        }
 
         $requestModel->setBasket($basketModel);
 

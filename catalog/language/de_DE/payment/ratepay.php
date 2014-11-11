@@ -6,6 +6,7 @@ $_['installment'] = 'Ratenzahlung';
 
 // Text
 $_['text_title'] = 'RatePAY';
+$_['text_ratepay_paymentpage'] = 'Sie haben %s als Zahlart gewählt. Nachfolgend gelangen Sie zur RatePAY Zahlungsseite um Ihre Bestellung abzuschließen.';
 $_['button_goto_paypage'] = 'Weiter zur Zahlung mit RatePAY';
 $_['button_goto_checkout'] = 'Zurück zur Kasse';
 $_['button_back'] = 'Zurück';

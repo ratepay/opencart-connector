@@ -2,7 +2,7 @@
 
 class RatepayHelperVersion
 {
-    private $_version = '0.8.7';
+    private $_version = '0.9.0';
 
     public function getRatepayVersion()
     {
