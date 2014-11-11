@@ -106,10 +106,10 @@
                 <td><select name="ratepay_ala">
                         <?php if ($ratepay_ala) { ?>
                         <option value="1" selected="selected"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0"><?php echo $ratepay_forbidden; ?></option>
                         <?php } else { ?>
                         <option value="1"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0" selected="selected"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0" selected="selected"><?php echo $ratepay_forbidden; ?></option>
                         <?php } ?>
                     </select></td>
             </tr>
@@ -119,10 +119,10 @@
                 <td><select name="ratepay_b2b">
                         <?php if ($ratepay_b2b) { ?>
                         <option value="1" selected="selected"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0"><?php echo $ratepay_forbidden; ?></option>
                         <?php } else { ?>
                         <option value="1"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0" selected="selected"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0" selected="selected"><?php echo $ratepay_forbidden; ?></option>
                         <?php } ?>
                     </select></td>
             </tr>
@@ -135,10 +135,10 @@
                 <td><select name="ratepay_pp_editable">
                         <?php if ($ratepay_pp_editable) { ?>
                         <option value="1" selected="selected"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0"><?php echo $ratepay_forbidden; ?></option>
                         <?php } else { ?>
                         <option value="1"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0" selected="selected"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0" selected="selected"><?php echo $ratepay_forbidden; ?></option>
                         <?php } ?>
                     </select></td>
             </tr>
@@ -151,7 +151,7 @@
                 <td><select name="ratepay_pp_basket">
                         <?php if ($ratepay_pp_basket) { ?>
                         <option value="1" selected="selected"><?php echo $ratepay_enabled; ?></option>
-                        <option value="0"><?php echo $ratepay_forbitten; ?></option>
+                        <option value="0"><?php echo $ratepay_forbidden; ?></option>
                         <?php } else { ?>
                         <option value="1"><?php echo $ratepay_allowed; ?></option>
                         <option value="0" selected="selected"><?php echo $ratepay_disabled; ?></option>

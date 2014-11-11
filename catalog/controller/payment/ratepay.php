@@ -236,22 +236,22 @@ class ControllerPaymentRatepay extends Controller {
         $customerObject->setVatId($order['payment_company']);
         $customerObject->setNationality(strtoupper($order['language_code']));
 
-        $address = new PiRatepay_Paypage_Model_Address(
+        $billingAddress = new PiRatepay_Paypage_Model_Address(
             $order['payment_address_1'],
             '',
             $order['payment_postcode'],
             $order['payment_city'],
             $order['payment_iso_code_2']);
-        $customerObject->setBillingAddress($address);
+        $customerObject->setBillingAddress($billingAddress);
 
-        if ($this->session->data['shipping_address_id'] != $this->session->data['payment_address_id']) {
-            $address = new PiRatepay_Paypage_Model_Address(
+        if (isset($this->session->data['shipping_address_id']) && ($this->session->data['shipping_address_id'] != $this->session->data['payment_address_id'])) {
+            $shippingAddress = new PiRatepay_Paypage_Model_Address(
                 $order['payment_address_1'],
                 '',
                 $order['payment_postcode'],
                 $order['payment_city'],
                 $order['payment_iso_code_2']);
-            $customerObject->setShippingAddress($address);
+            $customerObject->setShippingAddress($shippingAddress);
         }
 
         $requestModel->setCustomer($customerObject);

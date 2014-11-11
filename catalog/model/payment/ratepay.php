@@ -27,7 +27,7 @@ class ModelPaymentRatepay extends Model {
         }
 
         if (!(bool) $this->config->get('ratepay_ala') &&
-            ($this->session->data['shipping_address_id'] != $this->session->data['payment_address_id'])) {
+            (isset($this->session->data['shipping_address_id']) && ($this->session->data['shipping_address_id'] != $this->session->data['payment_address_id']))) {
             return $method_data;
         }
 

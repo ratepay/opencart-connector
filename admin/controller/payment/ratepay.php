@@ -27,7 +27,7 @@ class ControllerPaymentRatepay extends Controller {
             ->_setLang('ratepay_on')
             ->_setLang('ratepay_off')
             ->_setLang('ratepay_allowed')
-            ->_setLang('ratepay_forbitten')
+            ->_setLang('ratepay_forbidden')
             ->_setLang('ratepay_status_text')
             ->_setLang('ratepay_sandbox_text')
             ->_setLang('ratepay_sandbox_help')

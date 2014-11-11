@@ -1,49 +1,52 @@
 <?php
 // Heading
-$_['heading_title']           = 'RatePAY';
+$_['heading_title']              = 'RatePAY';
 
 // Text
-$_['text_payment']            = 'Payment';
-$_['text_success']            = 'Success: You have modified RatePAY payment module!';
-$_['text_ratepay']       = '<img src="view/image/payment/ratepay.png" alt="RatePAY" title="RatePAY" />';
+$_['text_payment']               = 'Payment';
+$_['text_success']               = 'Success: You have modified RatePAY payment module!';
+$_['text_ratepay']               = '<img src="view/image/payment/ratepay.png" alt="RatePAY" title="RatePAY" />';
 
-// Entry
-$_['entry_order_status'] = 'Orderstatus:';
-$_['entry_status_order'] = 'Created:';
-$_['entry_status_canceled'] = 'Cancelled/Annulled:';
-$_['entry_status_canceled_text'] = 'Applies on orders not yet delivered/captured.';
-$_['entry_status_delivered'] = 'Delivered:';
-$_['entry_status_delivered_text'] = 'Delivers a created order.';
-$_['entry_status_refunded'] = 'Credited:';
-$_['entry_status_refunded_text'] = 'Applies on orders delivered/captured.';
+$_['ratepay_enabled']            = 'activ';
+$_['ratepay_disabled']           = 'inactiv';
+$_['ratepay_on']                 = 'on';
+$_['ratepay_off']                = 'off';
+$_['ratepay_allowed']            = 'allowed';
+$_['ratepay_forbidden']          = 'forbidden';
 
+$_['ratepay_status_text']        = 'Status';
 
-$_['entry_order_status']      = 'Order Status:';
-$_['entry_order_status_text'] = 'Orderstatus for created order but not delivered. Deliver the invoice from Svea admin.';
-$_['entry_geo_zone']          = 'Geo Zone:';
-$_['entry_status']            = 'Status:';
-$_['entry_sort_order']        = 'Sort Order:';
-$_['entry_payment_description']   = 'Description in checkout:';
-$_['entry_shipping_billing']   = 'Shipping same as billing:';
-$_['entry_shipping_billing_text']   = 'On get address in checkout we always overwrite the billingaddress, this setting also overwrites shipping address. Important! This should be set to yes if your contract with Svea does not tell otherwise.:';
+$_['ratepay_sandbox_text']       = 'Sandbox';
+$_['ratepay_sandbox_help']       = 'Der Sandbox-Modul dient dem Modultest. Alle Requests werden gegen das RatePAY Integrations-Gateway gesendet.';
 
-$_['entry_username']          = 'Username:';
-$_['entry_password']          = 'Password:';
-$_['entry_clientno']          = 'Client No:';
-$_['entry_min_amount']   = 'Product´s min.price:';
+$_['ratepay_title_text']         = 'Title';
+$_['ratepay_title_help']         = 'Benennung innerhalb der Zahlartenauswahl';
 
-$_['entry_yes']               = 'yes';
-$_['entry_no']                = 'no';
-$_['entry_testmode']          = 'Testmode:';
+$_['ratepay_description_text']   = 'Description';
 
-$_['entry_auto_deliver']      = 'Auto deliver order:';
-$_['entry_auto_deliver_text'] = 'If enabled the invoice will automatically be delivered when creating an order. If disabled, deliver the invoice from Svea admin.';
-$_['entry_distribution_type'] = 'Invoice distribution type (As agreed with Svea):';
-$_['entry_post'] = 'Post';
-$_['entry_email'] = 'Email';
-$_['entry_product_text'] = 'Minimum amount to pay. Show on product display';
-$_['entry_product'] = 'Product Price Widget:';
+$_['ratepay_profile_id_text']    = 'Profile Id';
+$_['ratepay_security_code_text'] = 'Securiy Code';
+
+$_['ratepay_order_status_text']  = 'Order status';
+$_['ratepay_order_status_help']  = 'Bestellstatus nach erfolgreicher Bestellannahme durch RatePAY';
+
+$_['ratepay_limits_text']        = 'Order limits';
+$_['ratepay_limits_help']        = 'Die Grenzwerte innerhalb derer RatePAY als Zahlart verfügbar sein soll';
+$_['ratepay_limit_max_text']     = 'Minimum amout (EUR)';
+$_['ratepay_limit_min_text']     = 'Maximum amout (EUR)';
+
+$_['ratepay_ala_text']           = 'Different shipping address';
+
+$_['ratepay_b2b_text']           = 'B2B/<br/>business customers';
+
+$_['ratepay_pp_editable_text']   = 'PayPage - Customer data editable';
+$_['ratepay_pp_editable_help']   = 'Der Käufer soll die Möglichkeit haben seine Adressdaten auf der RatePAY Payment Page zu verändern';
+
+$_['ratepay_pp_basket_text']     = 'PayPage - Show basket';
+$_['ratepay_pp_basket_help']     = 'Dem Käufer wird auf der RatePAY Payment Page der Warenkorb angezeigt';
+
+$_['ratepay_sort_order_text']    = 'Sort order';
 
 // Error
-$_['error_permission']        = 'Warning: You do not have permission to modify Svea Invoice payment module!';
+$_['error_permission']           = 'Achtung: Sie sind nicht berechtigt am RatePAY Zahlungsmodul Änderungen vorzunehmen!';
 ?>
