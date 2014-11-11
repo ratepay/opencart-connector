@@ -148,6 +148,23 @@ class ControllerPaymentRatepay extends Controller {
                     $this->_getTaxAmount($this->tax->getRates($article['price'], $article['tax_class_id'])) * $article['quantity']
                 )
             );
+
+            if (isset($this->session->data['coupon'])) {
+                $coupon = $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
+                if ($coupon['type'] == 'P') {
+                    $discount = ($article['price'] * ($coupon['discount'] / 100)) * -1;
+                    $basketModel->addItem(
+                        new PiRatepay_Paypage_Model_Item(
+                            $article['product_id'] . "_" . $coupon['code'],
+                            $coupon['name'] . ": " . $article['name'],
+                            $article['quantity'],
+                            $discount,
+                            (int) $article['quantity'] * $discount,
+                            0
+                        )
+                    );
+                }
+            }
         }
 
         if (isset($this->session->data['shipping_method'])) {
@@ -165,16 +182,19 @@ class ControllerPaymentRatepay extends Controller {
 
         if (isset($this->session->data['coupon'])) {
             $coupon = $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
-            $basketModel->addItem(
-                new PiRatepay_Paypage_Model_Item(
-                    $coupon['code'],
-                    $coupon['name'],
-                    1,
-                    $coupon['discount'] * -1,
-                    $coupon['discount'] * -1,
-                    0
-                )
-            );
+            if ($coupon['type'] != 'P') {
+                $discount = $coupon['discount'] * -1;
+                $basketModel->addItem(
+                    new PiRatepay_Paypage_Model_Item(
+                        $coupon['code'],
+                        $coupon['name'],
+                        1,
+                        $discount,
+                        $discount,
+                        0
+                    )
+                );
+            }
         }
 
         if (isset($this->session->data['voucher'])) {
