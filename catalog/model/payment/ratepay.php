@@ -8,7 +8,7 @@ class ModelPaymentRatepay extends Model {
             return $method_data;
         }
 
-        if ($address['iso_code_2'] != 'DE') {
+        if ($address['iso_code_2'] != 'DE' || $this->session->data['currency'] != "EUR") {
             return $method_data;
         }
 

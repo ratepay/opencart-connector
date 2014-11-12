@@ -14,7 +14,7 @@ class ControllerPaymentRatepay extends Controller {
             $this->data['continue_to_ratepay'] = $helperConnection->getRatepayPayPageUrl($this->config->get('ratepay_sandbox')) . '/paypage/payment/show/lang/de/token/' . $initialisierung;
 
             //Definitions
-            $this->data['text_ratepay_paymentpage'] = str_replace('%s', $this->config->get('ratepay_title'), $this->language->get('text_ratepay_paymentpage'));
+            $this->data['text_ratepay_paymentpage'] = str_replace('%s', '"' . $this->config->get('ratepay_title') . '"', $this->language->get('text_ratepay_paymentpage'));
 
             $this->data['button_confirm'] = $this->language->get('button_goto_paypage');
             $this->data['button_back'] = $this->language->get('button_back');
@@ -232,9 +232,9 @@ class ControllerPaymentRatepay extends Controller {
         $customerObject->setGender('U');
         $customerObject->setPhone($order['telephone']);
         $customerObject->setFax($order['fax']);
-        $customerObject->setCompanyName($order['payment_company_id']);
-        $customerObject->setVatId($order['payment_company']);
-        $customerObject->setNationality(strtoupper($order['language_code']));
+        $customerObject->setCompanyName($order['payment_company']);
+        $customerObject->setVatId($order['payment_company_id']);
+        $customerObject->setNationality(strtoupper($order['payment_iso_code_2']));
 
         $billingAddress = new PiRatepay_Paypage_Model_Address(
             $order['payment_address_1'],
@@ -259,7 +259,7 @@ class ControllerPaymentRatepay extends Controller {
         $requestModel->setFlags(
             array(
                 'edit_customer' => (bool) $this->config->get('ratepay_pp_editable'),
-                'disable_items' => (bool) $this->config->get('ratepay_pp_basket')
+                'disable_items' => !(bool) $this->config->get('ratepay_pp_basket')
             )
         );
 

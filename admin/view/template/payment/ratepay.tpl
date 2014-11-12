@@ -150,11 +150,11 @@
                 </td>
                 <td><select name="ratepay_pp_basket">
                         <?php if ($ratepay_pp_basket) { ?>
-                        <option value="1" selected="selected"><?php echo $ratepay_enabled; ?></option>
-                        <option value="0"><?php echo $ratepay_forbidden; ?></option>
+                        <option value="1" selected="selected"><?php echo $ratepay_on; ?></option>
+                        <option value="0"><?php echo $ratepay_off; ?></option>
                         <?php } else { ?>
-                        <option value="1"><?php echo $ratepay_allowed; ?></option>
-                        <option value="0" selected="selected"><?php echo $ratepay_disabled; ?></option>
+                        <option value="1"><?php echo $ratepay_on; ?></option>
+                        <option value="0" selected="selected"><?php echo $ratepay_off; ?></option>
                         <?php } ?>
                     </select></td>
             </tr>

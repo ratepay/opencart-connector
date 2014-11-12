@@ -12,7 +12,7 @@ $_['ratepay_disabled']           = 'deaktiviert';
 $_['ratepay_on']                 = 'an';
 $_['ratepay_off']                = 'aus';
 $_['ratepay_allowed']            = 'zugelassen';
-$_['ratepay_forbitten']          = 'nicht zugelassen';
+$_['ratepay_forbidden']          = 'nicht zugelassen';
 
 $_['ratepay_status_text']        = 'Status';
 
