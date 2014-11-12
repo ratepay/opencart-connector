@@ -1,0 +1,14 @@
+RatePAY OpenCart Payment Page Connector
+
+Installationsanweisung
+
+- Kopieren Sie die enthaltenen Ordner in das OpenCart Shop-Verzeichnis
+- Die Aktivierung/Installation des Moduls erfolgt über das Shop-Backend
+    - Wählen Sie den Menüpunkt "Erweiterungen" (Extensions) und "Zahlarten" (Payments)
+    - In der Liste finden sie den Connector und der Bezeichnung "RatePAY"
+    - Mit "Installieren" (Install) schließen Sie die Installation ab
+- Die Konfiguration erfolgt anschließend über den Link "Bearbeiten" (Edit)
+- Das DOCS/-Verzeichnis, in dem sich diese Anweisung befindet, ist für den Betrieb des Connectors nicht notwendig und kann auf Wunsch entfernt werden
+
+Bei Rückfragen zur Konfiguration kontaktieren Sie bitte Ihre/n zuständige Integrations Manager/in oder wenden Sie sich an
+integration@ratepay.com
