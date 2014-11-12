@@ -127,6 +127,9 @@ class ControllerPaymentRatepay extends Controller {
         $order = $this->model_checkout_order->getOrder($this->session->data['order_id']);
         $articles = $this->cart->getProducts();
 
+        $totalGross = $order['total'];
+        $totalNet = 0;
+
         $requestModel = new PiRatepay_Paypage_Model_Request();
 
         $requestModel->setProfileId($this->config->get('ratepay_profile_id'));
@@ -134,9 +137,8 @@ class ControllerPaymentRatepay extends Controller {
         $requestModel->setSuccessUrl($this->url->link('payment/ratepay/success&order_id=' . $order['order_id']));
         $requestModel->setFailureUrl($this->url->link('payment/ratepay/failure'));
         $requestModel->setOrderId($order['order_id']);
-        $requestModel->setTax(array_sum($this->cart->getTaxes()));
 
-        $basketModel = new PiRatepay_Paypage_Model_Basket($order['currency_code'], $order['total']);
+        $basketModel = new PiRatepay_Paypage_Model_Basket($order['currency_code'], $totalGross);
         foreach ($articles as $article) {
             $basketModel->addItem(
                 new PiRatepay_Paypage_Model_Item(
@@ -148,6 +150,7 @@ class ControllerPaymentRatepay extends Controller {
                     $this->_getTaxAmount($this->tax->getRates($article['price'], $article['tax_class_id'])) * $article['quantity']
                 )
             );
+            $totalNet += $article['total'];
 
             if (isset($this->session->data['coupon'])) {
                 $coupon = $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
@@ -159,10 +162,11 @@ class ControllerPaymentRatepay extends Controller {
                             $coupon['name'] . ": " . $article['name'],
                             $article['quantity'],
                             $discount,
-                            (int) $article['quantity'] * $discount,
+                            $discount * $article['quantity'],
                             0
                         )
                     );
+                    $totalNet += $discount * $article['quantity'];
                 }
             }
         }
@@ -178,6 +182,7 @@ class ControllerPaymentRatepay extends Controller {
                     $this->_getTaxAmount($this->tax->getRates($this->session->data['shipping_method']['cost'], $this->session->data['shipping_method']['tax_class_id']))
                 )
             );
+            $totalNet += $this->session->data['shipping_method']['cost'];
         }
 
         if (isset($this->session->data['coupon'])) {
@@ -194,6 +199,7 @@ class ControllerPaymentRatepay extends Controller {
                         0
                     )
                 );
+                $totalNet += $discount;
             }
         }
 
@@ -209,7 +215,10 @@ class ControllerPaymentRatepay extends Controller {
                     0
                 )
             );
+            $totalNet -= $voucher['amount'];
         }
+
+        $requestModel->setTax($totalGross - $totalNet);
 
         $requestModel->setBasket($basketModel);
 
