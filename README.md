@@ -5,8 +5,8 @@ RatePAY GmbH - OpenCart Payment Page Connector
 |------|----------
 |Author | `Aarne Welschlau`
 |Shop Version | `1.5.6.x`
-|Version | `1.0.0`
+|Version | `1.0.2`
 |Link | `http://www.ratepay.com`
 |Mail | `integration@ratepay.com`
-|Description | `Initial Version`
+|Description | `Fixed live mode - Changed sandbox text/label`
 |Installation | `see separate installation manual`

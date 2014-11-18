@@ -289,7 +289,12 @@ class ControllerPaymentRatepay extends Controller {
                 $this->session->data['order_id']
             )
         );
-        $requestObject->setSandBoxUrl($helperConnection->getRatepayPayPageApiUrl($this->config->get('ratepay_sandbox')));
+
+        if ($this->config->get('ratepay_sandbox')) {
+            $requestObject->setSandBoxUrl($helperConnection->getRatepayPayPageApiUrl(true));
+        } else {
+            $requestObject->setLiveUrl($helperConnection->getRatepayPayPageApiUrl(false));
+        }
 
         return $requestObject;
     }

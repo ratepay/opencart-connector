@@ -16,8 +16,8 @@ $_['ratepay_forbidden']          = 'nicht zugelassen';
 
 $_['ratepay_status_text']        = 'Status';
 
-$_['ratepay_sandbox_text']       = 'Sandbox';
-$_['ratepay_sandbox_help']       = 'Der Sandbox-Modul dient dem Modultest. Alle Requests werden gegen das RatePAY Integrations-Gateway gesendet.';
+$_['ratepay_sandbox_text']       = 'Test-Modus';
+$_['ratepay_sandbox_help']       = 'Der Test-Modus (Sandbox) dient dem Modultest. Alle Requests werden gegen das RatePAY Integrations-Gateway gesendet.';
 
 $_['ratepay_title_text']         = 'Bezeichnung';
 $_['ratepay_title_help']         = 'Benennung innerhalb der Zahlartenauswahl';
