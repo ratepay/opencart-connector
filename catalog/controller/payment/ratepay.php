@@ -79,6 +79,9 @@ class ControllerPaymentRatepay extends Controller {
     }
 
     public function failure() {
+        require_once(DIR_APPLICATION . '../ratepay/bootstrap.php');
+        $helperVersion = new RatepayHelperVersion;
+
         $this->load->language('payment/ratepay');
 
         if (!$this->config->get('ratepay_sandbox')) {
@@ -86,9 +89,12 @@ class ControllerPaymentRatepay extends Controller {
         }
 
         $this->data['button_goto_checkout'] = $this->language->get('button_goto_checkout');
-        $this->data['error_failure'] = $this->language->get('error_failure');
+        $this->data['error_failure_1'] = $this->language->get('error_failure_1');
+        $this->data['error_failure_2'] = $this->language->get('error_failure_2');
 
         $this->data['button_checkout'] = $this->url->link('checkout/checkout');
+
+        $this->data['privacy_policy_url'] = $helperVersion->getRatepayLinkZgbDse();
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/ratepay.tpl')) {
             $this->template = $this->config->get('config_template') . '/template/payment/ratepay.tpl';
@@ -242,7 +248,7 @@ class ControllerPaymentRatepay extends Controller {
         $customerObject->setPhone($order['telephone']);
         $customerObject->setFax($order['fax']);
         $customerObject->setCompanyName($order['payment_company']);
-        $customerObject->setVatId($order['payment_company_id']);
+        $customerObject->setVatId($order['payment_tax_id']);
         $customerObject->setNationality(strtoupper($order['payment_iso_code_2']));
 
         $billingAddress = new PiRatepay_Paypage_Model_Address(

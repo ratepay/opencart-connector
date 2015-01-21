@@ -45,6 +45,8 @@ $_['ratepay_pp_editable_help']   = '';
 $_['ratepay_pp_basket_text']     = 'PayPage - Show basket';
 $_['ratepay_pp_basket_help']     = '';
 
+$_['ratepay_privacy_policy_url_text'] = 'Link zur RatePAY ZGB & DSE';
+
 $_['ratepay_sort_order_text']    = 'Sort order';
 
 // Error

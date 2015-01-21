@@ -45,6 +45,8 @@ $_['ratepay_pp_editable_help']   = 'Der Käufer soll die Möglichkeit haben sein
 $_['ratepay_pp_basket_text']     = 'PayPage - Warenkorbausgabe';
 $_['ratepay_pp_basket_help']     = 'Dem Käufer wird auf der RatePAY Payment Page der Warenkorb angezeigt';
 
+$_['ratepay_privacy_policy_url_text'] = 'Link zur RatePAY ZGB & DSE';
+
 $_['ratepay_sort_order_text']    = 'Reihenfolge der Zahlart';
 
 // Error

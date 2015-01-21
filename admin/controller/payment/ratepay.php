@@ -50,9 +50,11 @@ class ControllerPaymentRatepay extends Controller {
             ->_setLang('ratepay_pp_editable_help')
             ->_setLang('ratepay_pp_basket_text')
             ->_setLang('ratepay_pp_basket_help')
+            ->_setLang('ratepay_privacy_policy_url_text')
             ->_setLang('ratepay_sort_order_text');
 
-        $this->data['ratepay_version']  = $helperVersion->getRatepayVersion();
+        $this->data['ratepay_version'] = $helperVersion->getRatepayVersion();
+        $this->data['ratepay_privacy_policy_url'] = $helperVersion->getRatepayLinkZgbDse();
 
         if (isset($this->error['warning'])) {
             $this->data['error_permission'] = $this->error['warning'];

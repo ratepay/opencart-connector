@@ -1,7 +1,10 @@
 <?php echo $header; ?>
 
 <div class="content">
-    <div><p><?php echo $error_failure; ?></p></div>
+    <div><p>
+            <?php echo $error_failure_1; ?>
+            <a href="<?php echo $privacy_policy_url; ?>" target="_blank"><?php echo $error_failure_2; ?></a>.
+    </p></div>
 </div>
 
 <div class="buttons">

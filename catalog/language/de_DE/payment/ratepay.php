@@ -13,5 +13,6 @@ $_['button_back'] = 'Zurück';
 
 //Error responses
 $_['error_common'] = 'Ein Fehler ist aufgetreten. Bitte kontaktieren Sie umgehend den Shopbetreiber.';
-$_['error_failure'] = 'Leider ist eine Bezahlung mit RatePAY nicht möglich. Diese Entscheidung ist auf Grundlage einer automatisierten Datenverarbeitung getroffen worden. Einzelheiten finden sie in den zusätzlichen Allgemeinen Geschäftsbedingungen und dem Datenschutzhinweis für RatePAY-Zahlungsarten.';
+$_['error_failure_1'] = 'Leider ist eine Bezahlung mit RatePAY nicht möglich. Diese Entscheidung ist auf Grundlage einer automatisierten Datenverarbeitung getroffen worden. Einzelheiten finden sie in den';
+$_['error_failure_2'] = 'zusätzlichen Allgemeinen Geschäftsbedingungen und dem Datenschutzhinweis für RatePAY-Zahlungsarten';
 ?>

@@ -1,5 +1,6 @@
 <?php
 class ModelPaymentRatepay extends Model {
+
   	public function getMethod($address, $total) {
         $this->load->language('payment/ratepay');
         $method_data = array();

@@ -160,6 +160,11 @@
             </tr>
 
             <tr>
+                <td><?php echo $ratepay_privacy_policy_url_text; ?></td>
+                <td><?php echo $ratepay_privacy_policy_url; ?></td>
+            </tr>
+
+            <tr>
                 <td><?php echo $ratepay_sort_order_text; ?></td>
                 <td><input type="text" name="ratepay_sort_order" value="<?php echo $ratepay_sort_order; ?>" size="1" /></td>
             </tr>
